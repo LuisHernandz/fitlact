@@ -27,7 +27,7 @@
                 <p class="empezar-title fw-600">¿Cuál es tu objetivo?</p>
             </div>
             <div class="">
-                <a class="option col-md-12 d-flex align-items-center justify-content-space-between" href="#ec-2">
+                <a class="option col-md-12 d-flex align-items-center justify-content-space-between" href="{{route('alimentacion.index')}}">
                     <div class="option-img">
                         <img src="assets/img/calorias.png" alt="">
                     </div>
@@ -37,7 +37,7 @@
                     </div>
                 </a>
 
-                <a class="option col-md-12 d-flex align-items-center justify-content-space-between" href="#">
+                <a class="option col-md-12 d-flex align-items-center justify-content-space-between" href="{{route('alimentacion.index')}}">
                     <div class="option-img">
                         <img src="assets/img/equilibrio.png" alt="">
                     </div>
@@ -47,7 +47,7 @@
                     </div>
                 </a>
 
-                <a class="option col-md-12 d-flex align-items-center justify-content-space-between" href="#">
+                <a class="option col-md-12 d-flex align-items-center justify-content-space-between" href="{{route('alimentacion.index')}}">
                     <div class="option-img">
                         <img src="assets/img/fuerte.png" alt="">
                     </div>

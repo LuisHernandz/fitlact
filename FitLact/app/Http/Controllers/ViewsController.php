@@ -33,4 +33,9 @@ class ViewsController extends Controller
     } 
 
     // NIVEL 3
+
+    
+    public function index_alimentacion(){
+        return view('empezar.alimentacion'); 
+    } 
 }

@@ -22,3 +22,6 @@ Route::get('/ayuda', [ViewsController::class, 'index_ayuda'])
 
 Route::get('/empezar', [ViewsController::class, 'index_empezar'])
     -> name('empezar.index');
+
+    Route::get('/empezar/alimentacion', [ViewsController::class, 'index_alimentacion'])
+    -> name('alimentacion.index');

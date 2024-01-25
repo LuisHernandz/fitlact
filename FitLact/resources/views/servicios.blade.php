@@ -18,24 +18,30 @@
         <div class="row">
 
             <div class="col-md-6 col-lg-4 pb-5">
-                <div class="h-100 py-5 services-icon-wap shadow">
-                    <div class="h1 c-blue text-center"><i class="fa fa-tint" aria-hidden="true"></i></div>
-                    <h2 class="h5 mt-4 text-center">Nutrición</h2>
-                </div>
+                <a href="{{route('nutricion.index')}}">
+                    <div class="h-100 py-5 services-icon-wap shadow">
+                        <div class="h1 c-blue text-center"><i class="fa fa-tint" aria-hidden="true"></i></div>
+                        <h2 class="h5 mt-4 text-center">Nutrición</h2>
+                    </div>
+                </a>
             </div>
 
             <div class="col-md-6 col-lg-4 pb-5">
-                <div class="h-100 py-5 services-icon-wap shadow">
-                    <div class="h1 c-blue text-center"><i class="fas fa-exchange-alt"></i></div>
-                    <h2 class="h5 mt-4 text-center">Salud</h2>
-                </div>
+                <a href="{{route('salud.index')}}">
+                    <div class="h-100 py-5 services-icon-wap shadow">
+                        <div class="h1 c-blue text-center"><i class="fas fa-exchange-alt"></i></div>
+                        <h2 class="h5 mt-4 text-center">Salud</h2>
+                    </div>
+                </a>
             </div>
 
             <div class="col-md-6 col-lg-4 pb-5">
-                <div class="h-100 py-5 services-icon-wap shadow">
-                    <div class="h1 c-blue text-center"><i class="fa fa-percent"></i></div>
-                    <h2 class="h5 mt-4 text-center">Productos</h2>
-                </div>
+                <a href="{{route('productos.index')}}">
+                    <div class="h-100 py-5 services-icon-wap shadow">
+                        <div class="h1 c-blue text-center"><i class="fa fa-percent"></i></div>
+                        <h2 class="h5 mt-4 text-center">Productos</h2>
+                    </div>
+                </a>
             </div>
         </div>
     </section>

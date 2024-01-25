@@ -25,3 +25,11 @@ Route::get('/empezar', [ViewsController::class, 'index_empezar'])
 
     Route::get('/empezar/alimentacion', [ViewsController::class, 'index_alimentacion'])
     -> name('alimentacion.index');
+
+// Servicios
+Route::get('/nutricion', [ViewsController::class, 'nutricion'])
+    -> name('nutricion.index');
+Route::get('/productos', [ViewsController::class, 'productos'])
+    -> name('productos.index');
+Route::get('/salud', [ViewsController::class, 'salud'])
+    -> name('salud.index');

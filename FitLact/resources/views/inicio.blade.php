@@ -39,7 +39,6 @@
                                     </a>                                
                                 </div>
                             </div>
-                            <p>Puto Luis, chupa verga, cara de at <3 </p>
                         </div>
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last d-flex align-items-center justify-content-center">
                             <img class="img-fluid" src="./assets/img/nutrition-4.svg" alt="">

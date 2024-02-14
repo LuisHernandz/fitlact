@@ -44,9 +44,9 @@ class ViewsController extends Controller
         return view('service.nutricion');
     }
 
-    public function productos(){
-        return view('service.productos');
-    }
+    // public function productos(){
+    //     return view('service.productos');
+    // }
 
     public function salud(){
         return view('service.salud');

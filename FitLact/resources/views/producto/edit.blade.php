@@ -1,48 +1,44 @@
 @extends('layouts.app')
-@section('title', 'FitLact - Servicios')
+@section('title', 'FitLact - Modificar')
 
 <!-- Estilos únicos -->
 @section('content')
 
     <!-- Start Section -->
     <section class="container py-5">
-        {{-- jjj --}}
         <div class="row text-center pt-5 pb-3">
             <div class="col-lg-6 m-auto">
-                <h1 class="h1">Nuestros Servicios</h1>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    Lorem ipsum dolor sit amet.
-                </p>
-            </div>
-        </div>
-        <div class="row">
-
-            <div class="col-md-6 col-lg-4 pb-5">
-                <a href="{{route('nutricion.index')}}">
-                    <div class="h-100 py-5 services-icon-wap shadow">
-                        <div class="h1 c-blue text-center"><i class="fa fa-tint" aria-hidden="true"></i></div>
-                        <h2 class="h5 mt-4 text-center">Nutrición</h2>
+                <h1 class="display-4">Editar Producto</h1>
+                <form method="POST" action="{{ route('productos.update', $producto) }}">
+                    @csrf
+                    @method('PUT')
+                    <div class="form-group">
+                        <label for="nombre" class="form-label">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" class="form-control" value="{{ $producto->nombre }}">
                     </div>
-                </a>
-            </div>
-
-            <div class="col-md-6 col-lg-4 pb-5">
-                <a href="{{route('salud.index')}}">
-                    <div class="h-100 py-5 services-icon-wap shadow">
-                        <div class="h1 c-blue text-center"><i class="fas fa-exchange-alt"></i></div>
-                        <h2 class="h5 mt-4 text-center">Salud</h2>
+    
+                    <div class="form-group">
+                        <label for="descripcion" class="form-label">Descripción:</label>
+                        <textarea id="descripcion" name="descripcion" class="form-control">{{ $producto->descripcion }}</textarea>
                     </div>
-                </a>
-            </div>
-
-            <div class="col-md-6 col-lg-4 pb-5">
-                <a href="{{route('productos.index')}}">
-                    <div class="h-100 py-5 services-icon-wap shadow">
-                        <div class="h1 c-blue text-center"><i class="fa fa-percent"></i></div>
-                        <h2 class="h5 mt-4 text-center">Productos</h2>
+    
+                    <div class="form-group">
+                        <label for="precio" class="form-label">Precio:</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">$</span>
+                            </div>
+                            <input type="number" id="precio" name="precio" class="form-control" value="{{ $producto->precio }}">
+                        </div>
                     </div>
-                </a>
+    
+                    <div class="form-group">
+                        <label for="cantidad" class="form-label">Cantidad:</label>
+                        <input type="number" id="cantidad" name="cantidad" class="form-control" value="{{ $producto->cantidad }}">
+                    </div>
+    
+                    <button type="submit" class="btn btn-primary btn-block mt-4">Actualizar Producto</button>
+                </form>
             </div>
         </div>
     </section>

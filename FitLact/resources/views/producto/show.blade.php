@@ -1,50 +1,64 @@
+
 @extends('layouts.app')
-@section('title', 'FitLact - Servicios')
+@section('title', 'FitLact - Productos')
 
 <!-- Estilos únicos -->
 @section('content')
 
     <!-- Start Section -->
     <section class="container py-5">
-        {{-- jjj --}}
+        <a href="{{ route('productos.create') }}" class="btn btn-primary">Agregar</a>
         <div class="row text-center pt-5 pb-3">
             <div class="col-lg-6 m-auto">
-                <h1 class="h1">Nuestros Servicios</h1>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    Lorem ipsum dolor sit amet.
-                </p>
+                <h1 class="h1"><strong>PRODUCTOS</strong></h1>
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                        <button class="btn btn-sm" onclick="this.parentNode.remove()">X</button>
+                    </div>
+                @endif
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($productos as $producto)
+                        <tr>
+                            <td>{{ $producto->nombre }}</td>
+                            <td>{{ $producto->descripcion }}</td>
+                            <td>
+                                <div class="input-group">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">$ {{ $producto->precio }}</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>{{ $producto->cantidad }}</td>
+                            <td>
+                                <a href="{{ route('productos.edit', $producto->id) }}" class="btn btn-primary">Editar</a>
+                            </td>
+                            <td>
+                                <form action="{{ route('productos.destroy', $producto->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
-        <div class="row">
 
-            <div class="col-md-6 col-lg-4 pb-5">
-                <a href="{{route('nutricion.index')}}">
-                    <div class="h-100 py-5 services-icon-wap shadow">
-                        <div class="h1 c-blue text-center"><i class="fa fa-tint" aria-hidden="true"></i></div>
-                        <h2 class="h5 mt-4 text-center">Nutrición</h2>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-md-6 col-lg-4 pb-5">
-                <a href="{{route('salud.index')}}">
-                    <div class="h-100 py-5 services-icon-wap shadow">
-                        <div class="h1 c-blue text-center"><i class="fas fa-exchange-alt"></i></div>
-                        <h2 class="h5 mt-4 text-center">Salud</h2>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-md-6 col-lg-4 pb-5">
-                <a href="{{route('productos.index')}}">
-                    <div class="h-100 py-5 services-icon-wap shadow">
-                        <div class="h1 c-blue text-center"><i class="fa fa-percent"></i></div>
-                        <h2 class="h5 mt-4 text-center">Productos</h2>
-                    </div>
-                </a>
-            </div>
-        </div>
+        
     </section>
     <!-- End Section -->
 

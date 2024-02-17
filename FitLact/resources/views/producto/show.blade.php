@@ -17,6 +17,13 @@
                         <button class="btn btn-sm" onclick="this.parentNode.remove()">X</button>
                     </div>
                 @endif
+                
+                @if(session('alert'))
+                    <div class="alert alert-danger">
+                        {{ session('alert') }}
+                        <button class="btn btn-sm" onclick="this.parentNode.remove()">X</button>
+                    </div>
+                @endif
                 <table class="table">
                     <thead>
                         <tr>

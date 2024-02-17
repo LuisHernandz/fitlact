@@ -4,9 +4,19 @@
 <!-- Estilos únicos -->
 @section('content')
 
-<script src="{{asset('assets/scripvali/validacion.js')}}"></script>
+{{-- <script src="{{asset('assets/scripvali/validacion.js')}}"></script> --}}
     <!-- Start Section -->
     <section class="container py-5">
+        @if ($errors->any())
+            <div>
+                <ul style="color: red;">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                    <button class="btn btn-sm" onclick="this.parentNode.remove()">Quitar mensaje</button>
+                </ul>  
+            </div>
+            @endif
         <div class="row text-center pt-5 pb-3"">
             <div class="col-lg-6 m-auto">
                 <h1 class="h1">Agregar Producto</h1>
@@ -14,12 +24,12 @@
                     @csrf
                     <div class="form-group">
                         <label for="nombre">Nombre:</label>
-                        <input type="text" id="nombre" name="nombre" class="form-control" required>
+                        <input type="text" id="nombre" name="nombre" class="form-control" value="{{ old('nombre') }}" required>
                     </div>
     
                     <div class="form-group">
                         <label for="descripcion">Descripción:</label>
-                        <textarea id="descripcion" name="descripcion" class="form-control" required></textarea>
+                        <textarea id="descripcion" name="descripcion" class="form-control">{{ old('descripcion') }}</textarea>
                     </div>
     
                     <div class="form-group">
@@ -28,13 +38,13 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">$</span>
                             </div>
-                            <input type="number" id="precio" name="precio" class="form-control" required>
+                            <input type="number" id="precio" name="precio" class="form-control" value="{{ old('precio') }}" required>
                         </div>
                     </div>
     
                     <div class="form-group">
                         <label for="cantidad">Cantidad:</label>
-                        <input type="number" id="cantidad" name="cantidad" class="form-control" required>
+                        <input type="number" id="cantidad" name="cantidad" class="form-control" value="{{ old('cantidad') }}" required>
                     </div>
     
                     <button type="submit" class="btn btn-primary btn-block mt-4">Crear Producto</button>

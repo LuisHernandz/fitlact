@@ -21,7 +21,19 @@ class ProductoController extends Controller
 
     public function store(Request $request)
     {
-        Producto::create($request->all());
+        $campos=[
+            'nombre' => 'required|string|string|max:30',
+            'descripcion' => 'string|max:50|nullable',
+            'precio' => 'required',
+            'cantidad' => 'required|string|max:5',
+        ];
+        $mensaje=[
+            'required'=>':attribute requerido',
+        ];
+        
+        $datos = $this->validate($request, $campos, $mensaje);
+
+        Producto::create($datos);
         return redirect()->route('productos.index')->with('success', 'Archivo agregado exitosamente.');
     }
 
@@ -32,13 +44,24 @@ class ProductoController extends Controller
 
     public function update(Request $request, Producto $producto)
     {
-        $producto->update($request->all());
+        $campos=[
+            'nombre' => 'required|string|string|max:30',
+            'descripcion' => 'string|max:50|nullable',
+            'precio' => 'required',
+            'cantidad' => 'required|string|max:5',
+        ];
+        $mensaje=[
+            'required'=>':attribute requerido',
+        ];
+        
+        $datos = $this->validate($request, $campos, $mensaje);
+        $producto->update($datos);
         return redirect()->route('productos.index')->with('success', 'Archivo actualizado exitosamente.');
     }
 
     public function destroy(Producto $producto)
     {
         $producto->delete();
-        return redirect()->route('productos.index')->with('success', 'Archivo eliminado exitosamente.');
+        return redirect()->route('productos.index')->with('alert', 'Archivo eliminado exitosamente.');
     }
 }

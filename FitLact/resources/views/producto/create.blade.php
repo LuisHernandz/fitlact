@@ -13,45 +13,55 @@
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
-                    <button class="btn btn-sm" onclick="this.parentNode.remove()">Quitar mensaje</button>
-                </ul>  
+                </ul>
+                <button class="btn btn-sm" onclick="this.parentNode.remove()">Quitar mensaje</button>
             </div>
-            @endif
-        <div class="row text-center pt-5 pb-3"">
-            <div class="col-lg-6 m-auto">
-                <h1 class="h1">Agregar Producto</h1>
-                <form onsubmit="return validarLongitudFormulario();" method="POST" action="{{ route('productos.store') }}">
+        @endif
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h1 class="h1 text-center mb-4">Agregar Producto</h1>
+                <form method="POST" action="{{ route('productos.store') }}" enctype="multipart/form-data">
                     @csrf
-                    <div class="form-group">
-                        <label for="nombre">Nombre:</label>
-                        <input type="text" id="nombre" name="nombre" class="form-control" value="{{ old('nombre') }}" required>
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="descripcion">Descripción:</label>
-                        <textarea id="descripcion" name="descripcion" class="form-control">{{ old('descripcion') }}</textarea>
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="precio">Precio:</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">$</span>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="nombre">Nombre:</label>
+                                <input type="text" id="nombre" name="nombre" class="form-control" value="{{ old('nombre') }}" required>
                             </div>
-                            <input type="number" id="precio" name="precio" class="form-control" value="{{ old('precio') }}" required>
+                            <div class="form-group">
+                                <label for="carbohidratos">Carbohidratos:</label>
+                                <input type="number" id="carbohidratos" name="carbohidratos" class="form-control" value="{{ old('carbohidratos') }}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="proteinas">Proteínas:</label>
+                                <input type="number" id="proteinas" name="proteinas" class="form-control" value="{{ old('proteinas') }}" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="imagen">Imagen:</label>
+                                <input type="file" id="imagen" name="imagen" class="form-control-file">
+                            </div>
+                            <div class="form-group">
+                                <label for="grasas">Grasas:</label>
+                                <input type="number" id="grasas" name="grasas" class="form-control" value="{{ old('grasas') }}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="calorias">Calorías:</label>
+                                <input type="number" id="calorias" name="calorias" class="form-control" value="{{ old('calorias') }}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contenido">Contenido:</label>
+                                <input type="text" id="contenido" name="contenido" class="form-control" value="{{ old('contenido') }}" required>
+                            </div>
                         </div>
                     </div>
-    
-                    <div class="form-group">
-                        <label for="cantidad">Cantidad:</label>
-                        <input type="number" id="cantidad" name="cantidad" class="form-control" value="{{ old('cantidad') }}" required>
-                    </div>
-    
                     <button type="submit" class="btn btn-primary btn-block mt-4">Crear Producto</button>
                 </form>
             </div>
         </div>
     </section>
+    
     <!-- End Section -->
 
     <!-- Start Brands -->

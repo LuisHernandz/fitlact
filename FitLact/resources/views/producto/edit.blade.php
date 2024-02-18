@@ -6,42 +6,58 @@
 
     <!-- Start Section -->
     <section class="container py-5">
-        <div class="row text-center pt-5 pb-3">
-            <div class="col-lg-6 m-auto">
-                <h1 class="display-4">Editar Producto</h1>
-                <form method="POST" action="{{ route('productos.update', $producto) }}">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h1 class="display-4 text-center mb-4">Editar Producto</h1>
+                <form method="POST" action="{{ route('productos.update', $producto) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    <div class="form-group">
-                        <label for="nombre" class="form-label">Nombre:</label>
-                        <input type="text" id="nombre" name="nombre" class="form-control" value="{{ $producto->nombre }}">
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="descripcion" class="form-label">Descripción:</label>
-                        <textarea id="descripcion" name="descripcion" class="form-control">{{ $producto->descripcion }}</textarea>
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="precio" class="form-label">Precio:</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">$</span>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="nombre" class="form-label">Nombre:</label>
+                                <input type="text" id="nombre" name="nombre" class="form-control" value="{{ $producto->nombre }}">
                             </div>
-                            <input type="number" id="precio" name="precio" class="form-control" value="{{ $producto->precio }}">
+                            <div class="form-group">
+                                <label for="carbohidratos" class="form-label">Carbohidratos:</label>
+                                <input type="text" id="carbohidratos" name="carbohidratos" class="form-control" value="{{ $producto->carbohidratos }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="proteinas" class="form-label">Proteinas:</label>
+                                <input type="text" id="proteinas" name="proteinas" class="form-control" value="{{ $producto->proteinas }}">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="imagen" class="form-label">Imagen:</label>
+                                <input type="file" id="imagen" name="imagen" class="form-control-file">
+                                @if($producto->imagen)
+                                    <div class="mt-2">
+                                        <img src="{{ asset($producto->imagen) }}" alt="Imagen actual" style="max-width: 100px;">
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label for="grasas" class="form-label">Grasas:</label>
+                                <input type="text" id="grasas" name="grasas" class="form-control" value="{{ $producto->grasas }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="calorias" class="form-label">Calorías:</label>
+                                <input type="text" id="calorias" name="calorias" class="form-control" value="{{ $producto->calorias }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="contenido" class="form-label">Contenido:</label>
+                                <input type="text" id="contenido" name="contenido" class="form-control" value="{{ $producto->contenido }}">
+                            </div>
                         </div>
                     </div>
-    
-                    <div class="form-group">
-                        <label for="cantidad" class="form-label">Cantidad:</label>
-                        <input type="number" id="cantidad" name="cantidad" class="form-control" value="{{ $producto->cantidad }}">
-                    </div>
-    
                     <button type="submit" class="btn btn-primary btn-block mt-4">Actualizar Producto</button>
                 </form>
             </div>
         </div>
     </section>
+    
+    
     <!-- End Section -->
 
     <!-- Start Brands -->

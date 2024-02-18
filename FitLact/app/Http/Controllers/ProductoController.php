@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Producto;
+use Illuminate\Support\Facades\File;
+
 
 class ProductoController extends Controller
 {
     public function index()
     {
         $productos = Producto::all();
-        return view('producto.show', compact('productos'));
+        return view('producto.show', compact('productos')); 
     }
 
     public function create()
@@ -22,16 +24,27 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         $campos=[
-            'nombre' => 'required|string|string|max:30',
-            'descripcion' => 'string|max:50|nullable',
-            'precio' => 'required',
-            'cantidad' => 'required|string|max:5',
+            'imagen'=> 'nullable|image',
+            'nombre'=> 'required|string|max:30', 
+            'carbohidratos'=> 'required|string|max:8', 
+            'proteinas'=> 'required|string|max:8', 
+            'grasas'=>'required|string|max:8', 
+            'calorias'=>'required|string|max:8', 
+            'contenido'=>'required|string|max:8',
         ];
         $mensaje=[
             'required'=>':attribute requerido',
         ];
         
         $datos = $this->validate($request, $campos, $mensaje);
+
+        if ($request->hasFile('imagen')) {
+            $fotoPath = $request->file('imagen');
+            $destinationPath = 'assets/image/';
+            $filename = $fotoPath->getClientOriginalName();
+            $uploadSuccess = $fotoPath->move(public_path($destinationPath), $filename);
+            $datos['imagen'] = $destinationPath . $filename;
+        }
 
         Producto::create($datos);
         return redirect()->route('productos.index')->with('success', 'Archivo agregado exitosamente.');
@@ -45,22 +58,53 @@ class ProductoController extends Controller
     public function update(Request $request, Producto $producto)
     {
         $campos=[
-            'nombre' => 'required|string|string|max:30',
-            'descripcion' => 'string|max:50|nullable',
-            'precio' => 'required',
-            'cantidad' => 'required|string|max:5',
+            'imagen'=> 'nullable|image',
+            'nombre'=> 'required|string|string|max:30', 
+            'carbohidratos'=> 'required|string|string|max:8', 
+            'proteinas'=> 'required|string|string|max:8', 
+            'grasas'=>'required|string|string|max:8', 
+            'calorias'=>'required|string|string|max:8', 
+            'contenido'=>'required|string|string|max:8',
         ];
         $mensaje=[
             'required'=>':attribute requerido',
         ];
         
-        $datos = $this->validate($request, $campos, $mensaje);
-        $producto->update($datos);
+        $this->validate($request, $campos, $mensaje);
+
+        $producto->nombre = $request->nombre;
+        $producto->carbohidratos = $request->carbohidratos;
+        $producto->proteinas = $request->proteinas;
+        $producto->grasas = $request->grasas;
+        $producto->calorias = $request->calorias;
+        $producto->contenido = $request->contenido;
+    
+        if ($request->hasFile('imagen')) {
+            $foto = $request->file('imagen');
+    
+            if ($producto->imagen) {
+                $ruta_imagen_anterior = public_path($producto->imagen);
+                if (File::exists($ruta_imagen_anterior)) {
+                    File::delete($ruta_imagen_anterior);
+                }
+            }
+    
+            $destinationPath = 'assets/image/';
+            $filename = $foto->getClientOriginalName();
+            $uploadSuccess = $foto->move(public_path($destinationPath), $filename);
+            $producto->imagen = $destinationPath . $filename;
+        }
+
+        $producto->save();
         return redirect()->route('productos.index')->with('success', 'Archivo actualizado exitosamente.');
     }
 
     public function destroy(Producto $producto)
     {
+        if (!empty($producto->imagen) && file_exists(public_path($producto->imagen))) {
+            unlink(public_path($producto->imagen));
+        }
+
         $producto->delete();
         return redirect()->route('productos.index')->with('alert', 'Archivo eliminado exitosamente.');
     }

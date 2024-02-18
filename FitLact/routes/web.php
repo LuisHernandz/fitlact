@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 // Controllers
 use App\Http\Controllers\ViewsController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', [ViewsController::class, 'index_inicio'])
     -> name('inicio.index');
@@ -33,3 +34,6 @@ Route::get('/productos', [ViewsController::class, 'productos'])
     -> name('productos.index');
 Route::get('/salud', [ViewsController::class, 'salud'])
     -> name('salud.index');
+
+    
+Route::resource('users', UserController::class);

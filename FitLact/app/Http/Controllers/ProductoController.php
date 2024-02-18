@@ -6,14 +6,22 @@ use Illuminate\Http\Request;
 
 use App\Models\Producto;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 
 
 class ProductoController extends Controller
 {
     public function index()
     {
-        $productos = Producto::all();
-        return view('producto.show', compact('productos')); 
+        try {
+            $productos = Producto::all();
+            return view('producto.show', compact('productos'));
+        } catch (\Exception $e) {
+            //Log::error("Error al recuperar los productos: {$e->getMessage()}");
+            // return response()->view('errors.500', [], 500);
+            return view('errors.500');
+            //return redirect()->route('');
+        }
     }
 
     public function create()

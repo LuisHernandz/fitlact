@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (input) {
             input.addEventListener('input', function() {
                 if (/[^0-9.]+/.test(input.value)) {
-                    alert("Solo se permiten números y un punto decimal.");
+                    alert("Solo se permiten números.");
                     input.value = input.value.replace(/[^0-9.]+/g, '');
                 }
                 if ((input.value.match(/\./g) || []).length > 1) {

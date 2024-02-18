@@ -4,7 +4,7 @@
 <!-- Estilos únicos -->
 @section('content')
 
-{{-- <script src="{{asset('assets/scripvali/validacion.js')}}"></script> --}}
+<script src="{{asset('assets/scripvali/validacion.js')}}"></script>
     <!-- Start Section -->
     <section class="container py-5">
         @if ($errors->any())
@@ -30,11 +30,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="carbohidratos">Carbohidratos:</label>
-                                <input type="number" id="carbohidratos" name="carbohidratos" class="form-control" value="{{ old('carbohidratos') }}" required>
+                                <input type="text" id="carbohidratos" name="carbohidratos" class="form-control" value="{{ old('carbohidratos') }}" required>
                             </div>
                             <div class="form-group">
                                 <label for="proteinas">Proteínas:</label>
-                                <input type="number" id="proteinas" name="proteinas" class="form-control" value="{{ old('proteinas') }}" required>
+                                <input type="text" id="proteinas" name="proteinas" class="form-control" value="{{ old('proteinas') }}" required>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -44,11 +44,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="grasas">Grasas:</label>
-                                <input type="number" id="grasas" name="grasas" class="form-control" value="{{ old('grasas') }}" required>
+                                <input type="text" id="grasas" name="grasas" class="form-control" value="{{ old('grasas') }}" required>
                             </div>
                             <div class="form-group">
                                 <label for="calorias">Calorías:</label>
-                                <input type="number" id="calorias" name="calorias" class="form-control" value="{{ old('calorias') }}" required>
+                                <input type="text" id="calorias" name="calorias" class="form-control" value="{{ old('calorias') }}" required>
                             </div>
                             <div class="form-group">
                                 <label for="contenido">Contenido:</label>

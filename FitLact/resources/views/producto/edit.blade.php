@@ -3,7 +3,7 @@
 
 <!-- Estilos únicos -->
 @section('content')
-
+<script src="{{asset('assets/scripvali/validacion.js')}}"></script>
     <!-- Start Section -->
     <section class="container py-5">
         <div class="row justify-content-center">

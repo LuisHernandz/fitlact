@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const inputNombre = document.getElementById('nombre');
     if (inputNombre) {
         inputNombre.addEventListener('input', function() {
-            inputNombre.value = inputNombre.value.replace(/[^a-zA-Z\s]/g, '');
+            inputNombre.value = inputNombre.value.replace(/[^a-zA-Z\s]/g, '')
         });
     }
 });

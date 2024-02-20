@@ -67,11 +67,11 @@ class ProductoController extends Controller
     {
         $campos=[
             'imagen'=> 'nullable|image',
-            'nombre'=> 'required|string|string|max:30', 
-            'carbohidratos'=> 'required|string|string|max:8', 
-            'proteinas'=> 'required|string|string|max:8', 
-            'grasas'=>'required|string|string|max:8', 
-            'calorias'=>'required|string|string|max:8', 
+            'nombre'=> 'required|string|max:30', 
+            'carbohidratos'=> 'required|string|max:8', 
+            'proteinas'=> 'required|string|max:8', 
+            'grasas'=>'required|string|max:8', 
+            'calorias'=>'required|string|max:8', 
             'contenido'=>'required|string|string|max:8',
         ];
         $mensaje=[
@@ -93,7 +93,7 @@ class ProductoController extends Controller
             if ($producto->imagen) {
                 $ruta_imagen_anterior = public_path($producto->imagen);
                 if (File::exists($ruta_imagen_anterior)) {
-                    File::delete($ruta_imagen_anterior);
+                    File::delete($ruta_imagen_anterior); 
                 }
             }
     

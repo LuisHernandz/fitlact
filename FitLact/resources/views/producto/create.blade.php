@@ -1,7 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('title', 'FitLact - Subir Productos')
 
 <!-- Estilos únicos -->
+
 @section('content')
 
 <script src="{{asset('assets/scripvali/validacion.js')}}"></script>
@@ -33,7 +34,7 @@
                                 <input type="text" id="carbohidratos" name="carbohidratos" class="form-control" value="{{ old('carbohidratos') }}" required>
                             </div>
                             <div class="form-group">
-                                <label for="proteinas">Proteínas:</label>
+                                <label for="proteinas">Proteínas (en gramos):</label>
                                 <input type="text" id="proteinas" name="proteinas" class="form-control" value="{{ old('proteinas') }}" required>
                             </div>
                         </div>
@@ -51,12 +52,12 @@
                                 <input type="text" id="calorias" name="calorias" class="form-control" value="{{ old('calorias') }}" required>
                             </div>
                             <div class="form-group">
-                                <label for="contenido">Contenido:</label>
+                                <label for="contenido">Contenido (en gramos):</label>
                                 <input type="text" id="contenido" name="contenido" class="form-control" value="{{ old('contenido') }}" required>
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block mt-4">Crear Producto</button>
+                    <button type="submit" class="btn mt-4">Crear Producto</button>
                 </form>
             </div>
         </div>

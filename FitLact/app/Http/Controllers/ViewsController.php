@@ -51,4 +51,10 @@ class ViewsController extends Controller
     public function salud(){
         return view('service.salud');
     }
+
+    // VISTAS DEL ADMINISTRADOR
+
+    public function index_inicio_admin(){
+        return view('administrador.inicio');
+    }
 }

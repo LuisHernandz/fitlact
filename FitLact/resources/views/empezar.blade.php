@@ -47,7 +47,7 @@
                     </div>
                 </a>
 
-                <a class="option col-md-12 d-flex align-items-center justify-content-space-between" href="{{route('alimentacion.index')}}">
+                <a class="option col-md-12 d-flex align-items-center justify-content-space-between" href="{{route('alimentacion6.index')}}">
                     <div class="option-img">
                         <img src="assets/img/fuerte.png" alt="">
                     </div>

@@ -37,7 +37,8 @@
             </div>
 
             <div class="col-md-6 col-lg-4 pb-5">
-                <a href="{{route('productos.index')}}">
+                <!-- <a href="{{route('productos.index')}}"> -->
+                <a href="">
                     <div class="h-100 py-5 services-icon-wap shadow">
                         <div class="h1 c-blue text-center"><i class="fa fa-percent"></i></div>
                         <h2 class="h5 mt-4 text-center">Productos</h2>

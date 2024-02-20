@@ -229,6 +229,7 @@
     <script src="{{url('/assets/js/jquery-migrate-1.2.1.min.js')}}"></script>
     <script src="{{url('/assets/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{url('/assets/js/templatemo.js')}}"></script>
+    <script src="https://kit.fontawesome.com/cbd858e61d.js" crossorigin="anonymous"></script>
     
     @yield('scripts_unicos')
 </body>

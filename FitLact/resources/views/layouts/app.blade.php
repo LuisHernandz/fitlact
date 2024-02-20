@@ -33,7 +33,7 @@
             <!-- Logo -->
             <a class="navbar-brand d-flex align-items-center" href="index.html">
                 <div class="logo__img">
-                    <img src="assets/img/vaca.png" alt="">
+                    <img src="{{asset('assets/img/vaca.png')}}" alt="">
                 </div>
                 <div class="logo__text">
                 <p>

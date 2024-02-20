@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 // Controllers
 use App\Http\Controllers\ViewsController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', [ViewsController::class, 'index_inicio'])
     -> name('inicio.index');
@@ -44,3 +45,4 @@ Route::post('/productos', [ProductoController::class, 'store'])->name('productos
 Route::get('/productos/{producto}/edit', [ProductoController::class, 'edit'])->name('productos.edit');
 Route::put('/productos/{producto}', [ProductoController::class, 'update'])->name('productos.update');
 Route::delete('/productos/{producto}', [ProductoController::class, 'destroy'])->name('productos.destroy');
+Route::resource('users', UserController::class);

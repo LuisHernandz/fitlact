@@ -19,8 +19,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'apellidos',
         'email',
         'password',
+        'tipo',
     ];
 
     /**
@@ -32,14 +34,10 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
     /**
-     * The attributes that should be cast.
+     * Indicates if the model should be timestamped.
      *
-     * @var array<string, string>
+     * @var bool
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
+    public $timestamps = false;
 }

@@ -95,14 +95,27 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                                Mi Cuenta
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="">Cerrar sesión</a>
-                            </div>
+                            @if(auth()->check()) <!-- Verifica si el usuario ha iniciado sesión -->
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                                    {{ auth()->user()->name }} <!-- Muestra el nombre del usuario -->
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <!-- Ruta para cerrar sesión -->
+                                    <a class="dropdown-item" href="{{ route('login.destroy') }}"
+                                    onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                                        Cerrar sesión
+                                    </a>
+                        
+                                    <form id="logout-form" action="{{ route('login.destroy') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            @endif
                         </li>
+                        
+                        
                     </ul>
                 </div>
             </div>

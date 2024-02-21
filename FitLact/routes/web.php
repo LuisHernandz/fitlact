@@ -36,19 +36,37 @@ Route::get('/nutricion', [ViewsController::class, 'nutricion'])
 Route::get('/salud', [ViewsController::class, 'salud'])
     -> name('salud.index');
 
-/* ADMINISTRADOR */
+/* ADMINISTRADOR */ 
 
 // DASHBOARD
-Route::get('/administrador', [ViewsController::class, 'index_inicio_admin'])
-    -> name('inicio_admin.index');
-    
+Route::middleware(['auth'])->group(function () { 
+    Route::get('/administrador', [ViewsController::class, 'index_inicio_admin'])
+        -> name('inicio_admin.index');
+});  
 // CRUD PRODUCTOS
-Route::get('administrador/alimentos', [ProductoController::class, 'index'])->name('productos.index');
-Route::get('administrador/alimentos/create', [ProductoController::class, 'create'])->name('productos.create');
-Route::post('administrador/alimentos', [ProductoController::class, 'store'])->name('productos.store');
-Route::get('administrador/alimentos/{producto}/edit', [ProductoController::class, 'edit'])->name('productos.edit');
-Route::put('administrador/alimentos/{producto}', [ProductoController::class, 'update'])->name('productos.update');
-Route::delete('administrador/alimentos/{producto}', [ProductoController::class, 'destroy'])->name('productos.destroy');
+Route::middleware(['auth'])->group(function () { 
+    Route::get('administrador/alimentos', [ProductoController::class, 'index'])->name('productos.index');
+    Route::get('administrador/alimentos/create', [ProductoController::class, 'create'])->name('productos.create');
+    Route::post('administrador/alimentos', [ProductoController::class, 'store'])->name('productos.store');
+    Route::get('administrador/alimentos/{producto}/edit', [ProductoController::class, 'edit'])->name('productos.edit');
+    Route::put('administrador/alimentos/{producto}', [ProductoController::class, 'update'])->name('productos.update');
+    Route::delete('administrador/alimentos/{producto}', [ProductoController::class, 'destroy'])->name('productos.destroy');
+});
 
 // CRUD USUARIOS
-Route::resource('users', UserController::class);
+Route::middleware(['auth'])->group(function () { 
+    Route::resource('users', UserController::class);
+ });
+ 
+ Route::get('user/create', [UserController::class, 'newUser'])->name('user.create');
+ Route::post('user/create', [UserController::class, 'registro'])->name('user.registro');
+ 
+ 
+ //PARA EL LOGIN
+ Route::get('/iniciar-sesion', [UserController::class, 'login_create']) -> name('login.create');
+ 
+ Route::post('/iniciar-sesion', [UserController::class, 'login_store']) -> name('login.store');
+ 
+ Route::get('/registrar-usuarios', [UserController::class, 'create']) -> name('registrar.create');
+ 
+ Route::post('/cerrar-sesion', [UserController::class, 'login_destroy'])->name('login.destroy');

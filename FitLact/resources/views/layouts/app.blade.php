@@ -92,11 +92,32 @@
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                     </a> -->
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span>Iniciar Sesión</span>
-                        <!-- <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span> -->
-                    </a>
+                    <!-- Si el usuario es un invitado, muestra el enlace para iniciar sesión -->
+                    @if (auth()->guest())
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login.create') }}">
+                            <i class="fa fa-fw fa-user text-dark mr-3"></i>Iniciar Sesión
+                        </a>
+                    </li>
+                    @else
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-fw fa-user text-dark mr-3"></i>{{ auth()->user()->name }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('login.destroy') }}"
+                            onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                Cerrar sesión
+                            </a>
+
+                            <form id="logout-form" action="{{ route('login.destroy') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    @endif
+
                     <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>

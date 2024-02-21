@@ -101,7 +101,6 @@
 
                     </style>
                         <ul class="navbar-nav">
-                            <!-- Aquí van otros elementos del menú -->
                             @if (auth()->guest())
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login.create') }}">Iniciar Sesión</a>
@@ -117,7 +116,6 @@
                                     </div>
                                 </li>
                             @endif
-                            <!-- Aquí van otros elementos del menú -->
                         </ul>
                 
                     

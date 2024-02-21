@@ -34,16 +34,19 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->tipo }}</td>
                                 <td>
-                                    <a href="{{ route('users.edit', $user->id) }}" class="btn-b btn-primary btn-sm">Editar</a>
-                                    <form action="{{ route('users.destroy', $user->id) }}" method="post" style="display:inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn-b btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este usuario?')">Eliminar</button>
-                                    </form>
+                                    @if($user->id != 1)
+                                        <a href="{{ route('users.edit', $user->id) }}" class="btn-b btn-primary btn-sm">Editar</a>
+                                        <form action="{{ route('users.destroy', $user->id) }}" method="post" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn-b btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este usuario?')">Eliminar</button>
+                                        </form>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
+                    
                 </table>
             </div>
         </div>

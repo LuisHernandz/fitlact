@@ -93,30 +93,34 @@
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                     </a> -->
                     <!-- Si el usuario es un invitado, muestra el enlace para iniciar sesión -->
-                    @if (auth()->guest())
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login.create') }}">
-                            <i class="fa fa-fw fa-user text-dark mr-3"></i>Iniciar Sesión
-                        </a>
-                    </li>
-                    @else
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-fw fa-user text-dark mr-3"></i>{{ auth()->user()->name }}
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('login.destroy') }}"
-                            onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                                Cerrar sesión
-                            </a>
+                    <style>
+                        .navbar-nav {
+                            list-style-type: none;
+                            padding-left: 0; 
+                        }
 
-                            <form id="logout-form" action="{{ route('login.destroy') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-                    @endif
+                    </style>
+                        <ul class="navbar-nav">
+                            <!-- Aquí van otros elementos del menú -->
+                            @if (auth()->guest())
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login.create') }}">Iniciar Sesión</a>
+                                </li>
+                            @else
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-fw fa-user text-dark mr-3"></i>{{ auth()->user()->name }}
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('login.destroy') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar sesión</a>
+                                        <form id="logout-form" action="{{ route('login.destroy') }}" method="POST" style="display: none;">@csrf</form>
+                                    </div>
+                                </li>
+                            @endif
+                            <!-- Aquí van otros elementos del menú -->
+                        </ul>
+                
+                    
 
                     <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>

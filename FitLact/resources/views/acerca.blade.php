@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'FitLact - Acerca de')
+@section('title', 'FitLact - Acerca de Nosotros')
 
 <!-- Estilos únicos -->
 @section('content')
